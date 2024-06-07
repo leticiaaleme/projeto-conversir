@@ -4,9 +4,9 @@
 
 ***
 #### Desenvolvido por:
-[Cleber Alexandre Souza Júnior](https://github.com/SouzaCleber98)
-[Letícia Cristina Leme](https://github.com/leticiaaleme)
-[Murilo Camillo Martins](https://github.com/MuriloCamillo)
+- [Cleber Alexandre Souza Júnior](https://github.com/SouzaCleber98)
+- [Letícia Cristina Leme](https://github.com/leticiaaleme)
+- [Murilo Camillo Martins](https://github.com/MuriloCamillo)
 ***
 ## Introdução
 Neste projeto, desenvolvemos um Conversor de Unidades que permite aos usuários converter diferentes tipos de unidades, como temperatura, distâncias, peso/massa e tempo, de forma fácil e eficiente. O objetivo principal é fornecer uma ferramenta versátil e amigável que atenda às necessidades de conversão de unidades de uma variedade de usuários.
