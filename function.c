@@ -1,5 +1,33 @@
 #include "function.h"
 
+// Definindo cores para estilização
+#define RESET "\x1b[0m"
+#define RED "\x1b[31m"
+#define GREEN "\x1b[32m"
+#define YELLOW "\x1b[33m"
+#define BLUE "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN "\x1b[36m"
+#define WHITE "\x1b[37m"
+#define BRED "\x1b[91m"
+#define BGREEN "\x1b[92m"
+#define BYELLOW "\x1b[93m"
+#define BBLUE "\x1b[94m"
+#define BMAGENTA "\x1b[95m"
+#define BCYAN "\x1b[96m"
+#define BWHITE "\x1b[97m"
+#define BG_RED "\x1b[41m"
+#define BG_GREEN "\x1b[42m"
+#define BG_YELLOW "\x1b[43m"
+#define BG_BLUE "\x1b[44m"
+#define BG_MAGENTA "\x1b[45m"
+#define BG_CYAN "\x1b[46m"
+#define BG_WHITE "\x1b[47m"
+#define RESET "\x1b[0m"
+#define BOLD "\x1b[1m"
+#define ITALIC "\x1b[3m"
+#define UNDERLINE "\x1b[4m"
+
 // Constantes
 
 // Variáveis
@@ -17,7 +45,7 @@ void limparBuffer() {
 void salvarHistorico(const char* tipo, double valorOriginal, double valorConvertido, const char* unidadeOriginal, const char* unidadeConvertida) {
     FILE *file = fopen("historico.txt", "a");
     if (file == NULL) {
-        perror("\t\tErro ao abrir o arquivo");
+        perror(BG_RED "\n\t\tErro ao abrir o arquivo" RESET "\n");
         return;
     }
 
@@ -30,7 +58,7 @@ void salvarHistorico(const char* tipo, double valorOriginal, double valorConvert
             tipo, valorOriginal, unidadeOriginal, valorConvertido, unidadeConvertida);
 
     fclose(file);
-    
+
 }
 
 void mostrarHistorico(const char *nomeArquivo) {
@@ -42,8 +70,10 @@ void mostrarHistorico(const char *nomeArquivo) {
 
     // Verifica se o arquivo foi aberto com sucesso
     if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
+        printf(BG_RED "\t\tErro ao abrir o arquivo." RESET "\n\n");
         return;
+    } else {
+        printf("\t\t\nAqui está o relatório de conversões: \n\n");
     }
 
     // Lê e imprime cada linha do arquivo
@@ -79,35 +109,35 @@ bool menuConversao(struct unidade inicio) {
             if (!temperatura(nome, valor)) {
                 return false;
             }
-            printf("\t\tA temperatura convertida equivale a: %.2lf°\n\n", valorConversao);
+            printf(BG_GREEN "\t\tA temperatura convertida equivale a: %.2lf°" RESET "\n\n", valorConversao);
             break;
 
         case OP_MASSA:
             if (!massa(nome, valor)) {
                 return false;
             }
-            printf("\t\tO valor convertido equivale a: %.2lf\n\n", valorConversao);
+            printf(BG_GREEN "\t\tO valor convertido equivale a: %.2lf" RESET "\n\n", valorConversao);
             break;
 
         case OP_COMPRIMENTO:
             if (!comprimento(nome, valor)) {
                 return false;
             }
-            printf("\t\tO valor convertido equivale a: %.2lf\n\n", valorConversao);
+            printf(BG_GREEN "\t\tO valor convertido equivale a: %.2lf" RESET "\n\n", valorConversao);
             break;
 
         case OP_TEMPO:
             if (!tempo(nome, valor)) {
                 return false;
             }
-            printf("\t\tO valor convertido equivale a: %.2lf\n", valorConversao);
+            printf(BG_GREEN "\t\tO valor convertido equivale a: %.2lf" RESET "\n\n", valorConversao);
             break;
 
         case OP_SAIR:
             break;
 
         default:
-            printf("Opção inválida!\n");
+            printf(BG_RED "\n\t\tOpção inválida!" RESET "\n\n");
     }
     return true;
 }
@@ -143,7 +173,7 @@ bool temperatura(int opcao, double valor) {
             break;
 
         default:
-            printf("Opção inválida!\n");
+            printf(BG_RED "\t\tOpção inválida!" RESET "\n\n");
             return false;
     }
     return true;
@@ -188,7 +218,7 @@ bool massa(int opcao, double valor) {
             salvarHistorico("Massa", valorOriginal, valorConversao, "Quilogramas", "Libras");
             break;
         default:
-            printf("Opção inválida!\n");
+            printf(BG_RED "\t\tOpção inválida!" RESET "\n\n");
             return false;
     }
     return true;
@@ -231,7 +261,7 @@ bool comprimento(int opcao, double valor) {
             salvarHistorico("Comprimento", valorOriginal, valorConversao, "Quilômetros", "Metros");
             break;
         default:
-            printf("Opção inválida!\n");
+            printf(BG_RED "\t\tOpção inválida!" RESET "\n\n");
             return false;
     }
     return true;
@@ -314,7 +344,7 @@ bool tempo(int opcao, double valor) {
             salvarHistorico("Tempo", valorOriginal, valorConversao, "Minutos", "Horas");
             break;
         default:
-            printf("Opção inválida!\n");
+            printf(BG_RED "\t\tOpção inválida!" RESET "\n\n");
             return false;
     }
     return true;
