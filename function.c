@@ -17,7 +17,7 @@ void limparBuffer() {
 void salvarHistorico(const char* tipo, double valorOriginal, double valorConvertido, const char* unidadeOriginal, const char* unidadeConvertida) {
     FILE *file = fopen("historico.txt", "a");
     if (file == NULL) {
-        perror("Erro ao abrir o arquivo");
+        perror("\t\tErro ao abrir o arquivo");
         return;
     }
 
@@ -30,6 +30,7 @@ void salvarHistorico(const char* tipo, double valorOriginal, double valorConvert
             tipo, valorOriginal, unidadeOriginal, valorConvertido, unidadeConvertida);
 
     fclose(file);
+    
 }
 
 void mostrarHistorico(const char *nomeArquivo) {
@@ -47,7 +48,7 @@ void mostrarHistorico(const char *nomeArquivo) {
 
     // Lê e imprime cada linha do arquivo
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
-        printf("%s", linha);
+        printf("%s\n", linha);
     }
 
     // Fecha o arquivo
@@ -78,28 +79,28 @@ bool menuConversao(struct unidade inicio) {
             if (!temperatura(nome, valor)) {
                 return false;
             }
-            printf("O valor convertido é : %.2lf\n", valorConversao);
+            printf("\t\tA temperatura convertida equivale a: %.2lf°\n\n", valorConversao);
             break;
 
         case OP_MASSA:
             if (!massa(nome, valor)) {
                 return false;
             }
-            printf("O valor convertido é : %.2lf\n", valorConversao);
+            printf("\t\tO valor convertido equivale a: %.2lf\n\n", valorConversao);
             break;
 
         case OP_COMPRIMENTO:
             if (!comprimento(nome, valor)) {
                 return false;
             }
-            printf("O valor convertido é: %.2lf\n", valorConversao);
+            printf("\t\tO valor convertido equivale a: %.2lf\n\n", valorConversao);
             break;
 
         case OP_TEMPO:
             if (!tempo(nome, valor)) {
                 return false;
             }
-            printf("O valor convertido é: %.2lf\n", valorConversao);
+            printf("\t\tO valor convertido equivale a: %.2lf\n", valorConversao);
             break;
 
         case OP_SAIR:
