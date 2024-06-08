@@ -6,8 +6,7 @@
 double valorConversao;
 
 // Funções
-#include <stdio.h>
-#include <time.h>
+
 
 // Função para limpar o buffer do teclado
 void limparBuffer() {
