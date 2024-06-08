@@ -28,7 +28,6 @@
 #define ITALIC "\x1b[3m"
 #define UNDERLINE "\x1b[4m"
 
-// Constantes
 
 // Variáveis
 double valorConversao;
@@ -94,18 +93,7 @@ bool menuConversao(struct unidade inicio) {
     switch (opcao) {
         case OP_TEMPERATURA:
             valor = round(valor);
-            // Verificação de possíveis erros
-            // Erro de Kelvin < 0
-            if ((nome == 5 || nome == 6) && valor < 0) {
-                return false;
-            }
-            // Erros que resultam em Kelvin < 0
-            if (nome == 2 && valor < -273) {
-                return false;
-            }
-            if (nome == 4 && valor < -459) {
-                return false;
-            }
+            
             if (!temperatura(nome, valor)) {
                 return false;
             }
@@ -205,6 +193,7 @@ double Kelvin_Fahrenheits(double valor) {
     return ((9 * valor - 2297) / 5);
 }
 
+// Código da função massa
 bool massa(int opcao, double valor) {
     double valorOriginal = valor;
 
@@ -232,6 +221,7 @@ double Quilogramas_para_Libras(double quilogramas) {
     return quilogramas / 0.453592;
 }
 
+// Código da função comprimento
 bool comprimento(int opcao, double valor) {
     double valorOriginal = valor;
 
@@ -315,6 +305,7 @@ double Minutos_para_Horas(double minutos) {
     return minutos / 60.0;
 }
 
+// Código da função tempo
 bool tempo(int opcao, double valor) {
     double valorOriginal = valor;
 
