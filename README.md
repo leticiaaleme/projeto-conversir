@@ -105,3 +105,18 @@ Já Converter Tempo:
 Por fim, o usuário poderá ver o histórico de suas conversões caso deseje, selecionando a opção de Gerar Relatório.
 
 ![telarelatorio](https://github.com/leticiaaleme/projeto-conversir/blob/main/assets/telarelatorio.png)
+
+***
+
+## Como utilizar
+
+- Clone o repositório para o seu ambiente local:
+```c
+git clone https://github.com/leticiaaleme/projeto-conversir.git
+```
+
+- Abra o projeto na IDE de preferência;
+  
+- Execute o projeto para iniciar o ConverSir;
+
+- Siga as instruções fornecidas na interface. 
