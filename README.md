@@ -39,3 +39,47 @@ Após o desenvolvimento deste projeto, concluímos que o Conversor de Unidades o
 ## Referências
 
 - ### Guia de Usuário
+
+Usuário ao acessar o sistema se depara com uma interface simples que lhe oferece quatro opções de conversões e a funcionalidade de gerar relatórios.
+
+![telainicio](https://github.com/leticiaaleme/projeto-conversir/blob/main/assets/telainicio.png)
+
+Caso o usuário selecione a opção Converter Temperatura, encontrará o campo de inserção do valor que deseja converter para as seguintes bases:
+- Fahrenheit > Kelvin
+- Fahrenheit > Celsius
+- Kelvin > Fahrenheit
+- Kelvin > Celsius
+- Celsius > Fahrenheit
+- Celsius > Kelvin
+
+![telatemperatura](https://github.com/leticiaaleme/projeto-conversir/blob/main/assets/telatemperatura.png)
+
+A opção Converter Massa permite ao usuário, após inserir o valor desejado, converter para as seguintes bases:
+- Quilos > Libras
+- Libras > Quilos
+
+![telamassa](https://github.com/leticiaaleme/projeto-conversir/blob/main/assets/telamassa.png)
+
+Se a necessidade do usuário for a de Converter Distâncias:
+- Centímetro > Metros
+- Centímetro > Quilômetro
+- Metros > Centímetro
+- Metros > Quilômetro
+- Quilômetro > Centímetro
+- Quilometro > Metro
+
+![teladistancia](https://github.com/leticiaaleme/projeto-conversir/blob/main/assets/teladistancia.png)
+
+Já Converter Tempo:
+- Minutos > Hora
+- Minutos > Dia
+- Hora > Dia
+- Hora > Minutos
+- Dia > Minutos
+- Dia > Hora
+
+![telatempo](https://github.com/leticiaaleme/projeto-conversir/blob/main/assets/telatempo.png)
+
+Por fim, o usuário poderá ver o histórico de suas conversões caso deseje, selecionando a opção de Gerar Relatório.
+
+![telarelatorio](https://github.com/leticiaaleme/projeto-conversir/blob/main/assets/telarelatorio.png)
