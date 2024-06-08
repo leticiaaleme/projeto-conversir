@@ -1,5 +1,6 @@
 #include "function.h"
 
+
 // Definindo cores para estilização
 #define RESET "\x1b[0m"
 #define RED "\x1b[31m"
@@ -30,6 +31,10 @@
 
 // Protótipos
 int menu();
+bool validarEntradaInt(const char *entrada);
+bool validarEntradaDouble(const char *entrada);
+int capturarInteiro();
+double capturarDouble();
 
 int main(void) {
     // Variáveis
@@ -50,13 +55,11 @@ int main(void) {
                 printf("\n||" BMAGENTA "\t\t\t\tTemperatura" RESET "                 ||\n");
                 printf("||\t\tEscolha uma opção de conversão:     ||\n");
                 printf("==============================================\n\n");
-              //Deixar o aviso ou não?
                 printf(RED "\t\t\t\t!Atenção!\n");
                 printf("\tNa escala Kelvin, teoricamente não existem  \n");
                 printf("\tvalores negativos, entretanto a fins de \n");
                 printf("\tcuriosidade, as conversões para esses valores\n");
                 printf("\tainda serão feitas." RESET "\n\n");
-              //^^^^^^
                 printf("\t\t1 - Celsius para Fahrenheits\n");
                 printf("\t\t2 - Celsius para Kelvin\n");
                 printf("\t\t3 - Fahrenheits para Celsius\n");
@@ -65,13 +68,12 @@ int main(void) {
                 printf("\t\t6 - Kelvin para Fahrenheits\n");
                 printf("\t\t0 - Sair\n\n");
                 printf(BOLD "\t\tOpção:" RESET " ");
-                scanf("%d", &aux); // Captura a sub-opção
+                aux = capturarInteiro(); // Captura a sub-opção
                 if (aux == 0) {
                     break; // Sai do caso de temperatura se 0 for selecionado
                 }
                 printf(BOLD "\t\tDigite o valor a ser convertido:" RESET " ");
-                scanf("%lf", &aux2); // Captura o valor a ser convertido
-                limparBuffer(); // Limpa o buffer do teclado
+                aux2 = capturarDouble(); // Captura o valor a ser convertido
                 novo.tipoUnidade = opcao;
                 novo.nomeUnidade = aux;
                 novo.valorConversao = aux2;
@@ -91,13 +93,12 @@ int main(void) {
                 printf("\t\t2 - Quilogramas para libras\n");
                 printf("\t\t0 - Sair\n\n");
                 printf(BOLD "\t\tOpção:" RESET " ");
-                scanf("%d", &aux); // Captura a sub-opção
+                aux = capturarInteiro(); // Captura a sub-opção
                 if (aux == 0) {
                     break; // Sai do caso de massa se 0 for selecionado
                 }
                 printf(BOLD "\t\tDigite o valor a ser convertido:" RESET " ");
-                scanf("%lf", &aux2); // Captura o valor a ser convertido
-                limparBuffer(); // Limpa o buffer do teclado
+                aux2 = capturarDouble(); // Captura o valor a ser convertido
                 novo.tipoUnidade = opcao;
                 novo.nomeUnidade = aux;
                 novo.valorConversao = aux2;
@@ -118,13 +119,12 @@ int main(void) {
                 printf("\t\t6 - Quilômetros para Metros\n");
                 printf("\t\t0 - Sair\n\n");
                 printf(BOLD "\t\tOpção:" RESET " ");
-                scanf("%d", &aux); // Captura a sub-opção
+                aux = capturarInteiro(); // Captura a sub-opção
                 if (aux == 0) {
                     break; // Sai do caso de comprimento se 0 for selecionado
                 }
                 printf(BOLD "\t\tDigite o valor a ser convertido:" RESET " ");
-                scanf("%lf", &aux2); // Captura o valor a ser convertido
-                limparBuffer(); // Limpa o buffer do teclado
+                aux2 = capturarDouble(); // Captura o valor a ser convertido
                 novo.tipoUnidade = opcao;
                 novo.nomeUnidade = aux;
                 novo.valorConversao = aux2;
@@ -147,13 +147,12 @@ int main(void) {
                 printf("\t\t6 - Minutos para Horas\n");
                 printf("\t\t0 - Sair\n\n");
                 printf(BOLD "\t\tOpção:" RESET " ");
-                scanf("%d", &aux); // Captura a sub-opção
+                aux = capturarInteiro(); // Captura a sub-opção
                 if (aux == 0) {
                     break; // Sai do caso de tempo se 0 for selecionado
                 }
                 printf(BOLD "\t\tDigite o valor a ser convertido:" RESET " ");
-                scanf("%lf", &aux2); // Captura o valor a ser convertido
-                limparBuffer(); // Limpa o buffer do teclado
+                aux2 = capturarDouble(); // Captura o valor a ser convertido
                 novo.tipoUnidade = opcao;
                 novo.nomeUnidade = aux;
                 novo.valorConversao = aux2;
@@ -181,24 +180,84 @@ int main(void) {
 int menu() {
     int op = OP_NAO_SELECIONADA;
 
-  printf("\n");
-  printf(BCYAN BOLD"\t\t===========================\n");
-  printf("\t\t||" BWHITE BOLD "Bem vindo ao ConverSir!" RESET BCYAN BOLD "||\n");
-  printf("\t\t===========================\n\n" RESET);
-  printf(BCYAN BOLD "==============================================\n");
-  printf("||" BWHITE BOLD "Converta grandezas de maneira simples." RESET BCYAN BOLD "\t||\n");
-  printf("||" BWHITE "Selecione a grandeza que deseja converter:" RESET BCYAN BOLD "||\n");
-  printf("==============================================" RESET "\n\n");
-  printf(BG_BLUE "\t\t\t\t*** Menu ***" RESET "\n\n");
-  printf("\t\t\t %d - Temperatura\n", OP_TEMPERATURA);
-  printf("\t\t\t %d - Massa\n", OP_MASSA);
-  printf("\t\t\t %d - Distância\n ", OP_COMPRIMENTO);
-  printf("\t\t\t %d - Tempo\n", OP_TEMPO);
-  printf("\t\t\t %d - Gerar Relatório\n", OP_RELATORIO);
-  printf("\t\t\t %d - Sair\n\n", OP_SAIR);
-  printf(BG_BLUE "\t\t\tDigite sua opção:" RESET " ");
-    scanf("%d", &op); // Captura a opção do menu principal
-    scanf("%*c"); // Limpa o buffer
+    printf("\n");
+    printf(BCYAN BOLD"\t\t===========================\n");
+    printf("\t\t||" BWHITE BOLD "Bem vindo ao ConverSir!" RESET BCYAN BOLD "||\n");
+    printf("\t\t===========================\n\n" RESET);
+    printf(BCYAN BOLD "==============================================\n");
+    printf("||" BWHITE BOLD "Converta grandezas de maneira simples." RESET BCYAN BOLD "\t||\n");
+    printf("||" BWHITE "Selecione a grandeza que deseja converter:" RESET BCYAN BOLD "||\n");
+    printf("==============================================" RESET "\n\n");
+    printf("\t1 - Temperatura\n");
+    printf("\t2 - Massa\n");
+    printf("\t3 - Comprimento\n");
+    printf("\t4 - Tempo\n");
+    printf("\t5 - Relatório\n");
+    printf("\t0 - Sair\n\n");
+    printf(BOLD "\tOpção:" RESET " ");
+    op = capturarInteiro(); // Captura a opção
 
-    return op; // Retorna a opção selecionada
+    return op;
+}
+
+// Função para validar se a entrada é um número inteiro
+bool validarEntradaInt(const char *entrada) {
+    int i = 0;
+    // Se o primeiro caractere é um sinal, ignorar
+    if (entrada[0] == '-' || entrada[0] == '+') {
+        i = 1;
+    }
+    // Checar se os demais caracteres são dígitos
+    for (; entrada[i] != '\0'; i++) {
+        if (!isdigit(entrada[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+// Função para validar se a entrada é um número double
+bool validarEntradaDouble(const char *entrada) {
+    int i = 0;
+    bool pontoEncontrado = false;
+    // Se o primeiro caractere é um sinal, ignorar
+    if (entrada[0] == '-' || entrada[0] == '+') {
+        i = 1;
+    }
+    // Checar se os demais caracteres são dígitos ou ponto
+    for (; entrada[i] != '\0'; i++) {
+        if (entrada[i] == '.') {
+            if (pontoEncontrado) {
+                return false; // Mais de um ponto
+            }
+            pontoEncontrado = true;
+        } else if (!isdigit(entrada[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Função para capturar e validar um número inteiro
+int capturarInteiro() {
+    char buffer[100];
+    while (1) {
+        fgets(buffer, sizeof(buffer), stdin);
+        buffer[strcspn(buffer, "\n")] = '\0'; // Remove o newline
+        if (validarEntradaInt(buffer)) {
+            return atoi(buffer);
+        }
+        printf(RED "Entrada inválida! Por favor, digite um número inteiro: " RESET);
+    }
+}
+// Função para capturar e validar um número double
+double capturarDouble() {
+    char buffer[100];
+    while (1) {
+        fgets(buffer, sizeof(buffer), stdin);
+        buffer[strcspn(buffer, "\n")] = '\0'; // Remove o newline
+        if (validarEntradaDouble(buffer)) {
+            return atof(buffer);
+        }
+        printf(RED "Entrada inválida! Por favor, digite um número: " RESET);
+    }
 }
