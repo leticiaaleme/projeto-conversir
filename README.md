@@ -23,7 +23,7 @@ Para pessoas que buscam praticidade e agilidade na hora de converter grandezas d
 
 ### Diagrama de Caso de Uso
 
-<img src="assets/casodeuso.png" width="500">
+<img src="assets/diagramacaso.png" width="500">
 
 ### Descrição dos Fluxos de Eventos
 
