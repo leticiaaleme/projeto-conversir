@@ -6,6 +6,8 @@
 #include <stdbool.h>
 #include <math.h>
 #include <time.h>
+#include <ctype.h>
+#include <string.h>
 
 // Estrutura de dados para representar a unidade de conversão
 struct unidade {
@@ -84,5 +86,30 @@ double Minutos_para_Dias(double minutos);
 double Minutos_para_Horas(double minutos);
 
 bool tempo(int opcao, double valor);
+
+#ifndef FUNCTION_H
+#define FUNCTION_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <ctype.h>
+
+// Opções de menu
+#define OP_NAO_SELECIONADA -1
+#define OP_TEMPERATURA 1
+#define OP_MASSA 2
+#define OP_COMPRIMENTO 3
+#define OP_TEMPO 4
+#define OP_RELATORIO 5
+#define OP_SAIR 0
+
+
+// Funções de conversão
+bool menuConversao(struct unidade novo);
+void mostrarHistorico(const char *nomeArquivo);
+
+#endif
+
 
 #endif // FUNCTION_FUNCTION_H
