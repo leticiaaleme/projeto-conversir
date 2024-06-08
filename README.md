@@ -21,9 +21,29 @@ Para pessoas que buscam praticidade e agilidade na hora de converter grandezas d
 
 ### Diagrama de Caso de Uso
 
+<img src="assets/casodeuso.png" width="500">
+
 ### Descrição dos Fluxos de Eventos
 
+Fluxo Básico
+1. Usuário seleciona a opção desejada.
+2. Opção selecionada é “Converter Temperatura”.
+3. Usuário digita os valores a serem convertidos.
+4. Sistema apresenta o valor convertido.
+   
+Fluxo Alternativo
+
+2. Opção selecionada é “Converter Massa/Peso” e retorna para o passo 3.
+
+   2.a. Opção selecionada é “Converter Comprimento” e retorna para o passo 3.
+
+      2.a.a. Opção selecionada é “Converter Tempo” e retorna para o passo 3.
+    
+3. Valor inválido: se o usuário inserir um valor inválido ou ambíguo, uma mensagem de erro é apresentada, solicitando para reinserir o valor.
+
 ### Diagrama de Atividades
+
+<img src="assets/diagramaatividades.png" width="800">
 
 ***
 
