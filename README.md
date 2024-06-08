@@ -16,6 +16,8 @@ Para pessoas que buscam praticidade e agilidade na hora de converter grandezas d
 
 ## Product Backlog
 
+<img src="assets/backlog.png" width="700">
+
 ***
 ## Diagramas da UML
 
